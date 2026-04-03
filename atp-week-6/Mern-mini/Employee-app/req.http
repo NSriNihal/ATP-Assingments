@@ -1,0 +1,31 @@
+###Create Employee
+
+POST http://localhost:5050/employee-api/employee
+Content-Type: application/json
+
+{
+    "name":"Ravi khan",
+    "email":"ravikhan@gmail.com",
+    "mobile":99897910,
+    "designation":"Manager",
+    "companyName":"Google"
+
+}
+
+###read all employees
+GET http://localhost:5050/employee-api/employee
+
+### Edit employee
+PUT http://localhost:5050/employee-api/employee/69ca1bce3196c918f2de4b2a
+Content-Type: application/json
+
+{
+    "name":"Ravi kumar",
+    "email":"ravi@gmail.com",
+    "mobile":8555813209,
+    "designation":"Manager",
+    "companyName":"Google"
+}
+
+### delete employee
+DELETE http://localhost:5050/employee-api/employee/69ca1bce3196c918f2de4b2a
