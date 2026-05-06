@@ -1,18 +1,25 @@
-*{
+/* ============================
+   Global Reset
+   ============================ */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-nav{
+/* ============================
+   Navigation / Hero Section
+   ============================ */
+nav {
     background-color: rgba(143, 143, 143, 0.288);
 }
 
-.top{
+/* Hero content container — centered with 70% width */
+.top {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -21,16 +28,17 @@ nav{
     padding-bottom: 50px;
 }
 
-.top h1{
+.top h1 {
     font-size: 4rem;
     font-weight: 100;
 }
 
-.top p{
+.top p {
     margin-top: 15px;
 }
 
-.top button{
+/* Hero call-to-action button */
+.top button {
     width: 130px;
     height: 35px;
     margin-top: 10px;
@@ -40,8 +48,12 @@ nav{
     color: white;
 }
 
-main{
-    margin: auto;
+/* ============================
+   Main Content — Card Layout
+   ============================ */
+
+/* Three-column flexbox layout for content cards */
+main {
     display: flex;
     width: 70%;
     margin: auto;
@@ -49,12 +61,14 @@ main{
     padding: 30px 0;
 }
 
-main h2{
+main h2 {
     font-size: 1.5rem;
     font-weight: 500;
     padding: 5px 0;
 }
-main button{
+
+/* Card action button */
+main button {
     width: 130px;
     height: 35px;
     margin-top: 10px;
@@ -64,25 +78,31 @@ main button{
     color: white;
 }
 
-button:hover{
+/* Hover effect for all buttons — subtle glow */
+button:hover {
     color: rgba(0, 0, 0, 0.877);
-
-    box-shadow:1px 1px 5px 3px rgba(20, 190, 220, 0.543);
+    box-shadow: 1px 1px 5px 3px rgba(20, 190, 220, 0.543);
 }
-.heading{
+
+/* Each card takes 30% of the main container width */
+.heading {
     width: 30%;
 }
 
-hr{
+/* ============================
+   Footer
+   ============================ */
+hr {
     width: 70%;
     margin: auto;
     margin-bottom: 10px;
 }
 
-footer{
+footer {
     width: 70%;
     margin: auto;
 }
-footer p{
+
+footer p {
     margin-top: 10px;
 }
