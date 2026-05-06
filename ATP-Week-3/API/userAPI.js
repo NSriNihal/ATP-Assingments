@@ -1,72 +1,87 @@
-//Create a mini express app(Seprate route)
+/**
+ * User API Router — CRUD Operations for Users
+ * 
+ * Part of: Week 3 Express.js REST API
+ * 
+ * Endpoints:
+ *   GET    /user-api/users      → Read all users
+ *   GET    /user-api/users/:id  → Read user by ID
+ *   POST   /user-api/users      → Create a new user
+ *   PUT    /user-api/users      → Update an existing user
+ *   DELETE /user-api/users/:id  → Delete a user by ID
+ * 
+ * Note: Uses in-memory array (no database). Data resets on server restart.
+ */
 
-import exp from 'express'
-export const userApp = exp.Router()
+import exp from "express";
+export const userApp = exp.Router();
 
-let users = []
+// In-memory user storage (simulates a database)
+let users = [];
 
-//create USER API(REST API)(Reprentational State Transfer API)
+/**
+ * GET /users — Read all users
+ * Returns the complete list of users
+ */
+userApp.get("/users", (req, res) => {
+  res.json({ message: "all data", payload: users });
+});
 
-//structure of a route
-//app.METHOD(path,request handler) (method: get,post,put,delete)(in rest api path-utl should be a noun)
+/**
+ * GET /users/:id — Read a specific user by their ID
+ * URL parameter 'id' is extracted from req.params
+ */
+userApp.get("/users/:id", (req, res) => {
+  let idOfUrl = Number(req.params.id); // Convert string param to number
+  let index = users.findIndex((userObj) => userObj.id === idOfUrl);
 
-  //Route to handle get request of a client(http://localhost:3000/users)
-  userApp.get('/users',(req,res)=>{   //req : request obj ,res: response object
-    //read all users and send response
-    res.json({message:"all data",payload:users})
-  })
+  if (index === -1) {
+    return res.json({ message: "user not found" });
+  }
 
+  res.json({ message: "data", payload: users[index] });
+});
 
+/**
+ * POST /users — Create a new user
+ * Expects user object in request body
+ */
+userApp.post("/users", (req, res) => {
+  const newUser = req.body;
+  users.push(newUser);
+  res.json({ message: "user Created" });
+});
 
-  userApp.get('/users/:id',(req,res)=>{   //req : request obj ,res: response object
-    //read all users and send response
-    let idOfUrl = Number(req.params.id)
-    let index = users.findIndex((userObj)=>userObj.id === idOfUrl)
-    if(index === -1){
-      return res.json({message:"user not found"})
-    }
-    res.json({message:" data",payload:users[index]})
-  })
+/**
+ * PUT /users — Update an existing user
+ * Expects modified user object (with id) in request body
+ * Uses splice() to replace the user at the found index
+ */
+userApp.put("/users", (req, res) => {
+  let modifiedUser = req.body;
+  let index = users.findIndex((userObj) => userObj.id === modifiedUser.id);
 
+  if (index === -1) {
+    return res.json({ message: "user not found" });
+  }
 
+  // Replace the existing user with the modified one
+  users.splice(index, 1, modifiedUser);
+  res.json("Updated");
+});
 
+/**
+ * DELETE /users/:id — Delete a user by their ID
+ * URL parameter 'id' is used to find and remove the user
+ */
+userApp.delete("/users/:id", (req, res) => {
+  let idOfUrl = Number(req.params.id);
+  let index = users.findIndex((userObj) => userObj.id === idOfUrl);
 
+  if (index === -1) {
+    return res.json({ message: "User not found" });
+  }
 
-  //Route to handle POST request of a client
-  userApp.put('/users',(req,res)=>{
-    //get modified user from client {}
-    let modifiedUser = req.body
-    //get index of exesting user in users array
-    let index = users.findIndex(userObj =>userObj.id ===modifiedUser.id )
-    if(index === -1){
-      return res.json({message:"user not found"})
-    }
-    //update user with index
-    users.splice(index,1,modifiedUser)
-    //send response
-    res.json("Updated")
-
-  })
-  //Route to handle PUT request of a client
-  userApp.post('/users',(req,res)=>{
-    //get new user from client
-    const newUser = req.body;
-    users.push(newUser)
-    res.json({message:"user Created"})
-    //  and push user into users
-    //send res
-  })
-  //Route to handle DELETE request of a client
-  userApp.delete('/users/:id',(req,res)=>{
-    //get id of user from url parameter
-    let idOfUrl = Number(req.params.id) //{id : 1}
-    // console.log(req.params)
-    //find index of user
-    let index = users.findIndex((userObj)=>userObj.id === idOfUrl)
-    //delete user by index
-    if(index === -1){
-      return res.json({message:"User not found"})
-    }
-    users.splice(index,1)
-    res.json({message:"Deleted"})
-  })
+  users.splice(index, 1);
+  res.json({ message: "Deleted" });
+});

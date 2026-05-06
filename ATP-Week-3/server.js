@@ -1,34 +1,35 @@
-//create HTTP server
-//express application internally contains HTTP server
-import exp from 'express'
-import {userApp} from "./API/userAPI.js"
-import {productApp} from "./API/productAPI.js"
+/**
+ * Server Entry Point — Express.js Backend
+ * 
+ * Week 3: Node.js & Express.js REST API Development
+ * 
+ * This file sets up the Express application with:
+ *   - JSON body parser middleware
+ *   - User API routes (mounted at /user-api)
+ *   - Product API routes (mounted at /product-api)
+ * 
+ * Dependencies: express
+ * Run: node server.js (or use nodemon for auto-reload)
+ */
 
-const app = exp()   //this function creates and returns express application// it helps to create entire backend
+import exp from "express";
+import { userApp } from "./API/userAPI.js";
+import { productApp } from "./API/productAPI.js";
 
-//use body passer middleware(in-built middleware)
-app.use(exp.json())  //convert json to js and sends the data to route
+// Create the Express application instance
+const app = exp();
 
-//set a port number
+// Body parser middleware — converts incoming JSON to JavaScript objects
+app.use(exp.json());
 
-const port = 3000   //any number can be given
+// Set the port number for the HTTP server
+const port = 3000;
 
-//assign port number to HTTP server
-app.listen(port ,()=>console.log(`server lisiting to port : ${port}`))
-//server is ready
-//Test Data(in future we replace this datd with db)
+// Start the server and listen on the specified port
+app.listen(port, () => console.log(`Server listening on port: ${port}`));
 
-  //POSTMAN, rest client behaves like a client side application
-  // nodemon to automatically update contents in server withot reatating the server
-
-
-
-
-// .use --->middleware
-  //farword req to userAPI if path starts with /user-api
-  app.use('/user-api',userApp)
-  //farword req to userAPI if path starts with /user-api
-  app.use('/product-api',productApp)
- 
-
- 
+// Mount API routers as middleware
+// Forward requests starting with /user-api to the user router
+app.use("/user-api", userApp);
+// Forward requests starting with /product-api to the product router
+app.use("/product-api", productApp);
