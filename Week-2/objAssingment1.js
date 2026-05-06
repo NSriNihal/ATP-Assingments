@@ -1,52 +1,52 @@
-// ASSIGNMENT 1:
-// -------------
-// You are building a shopping cart summary for an e-commerce website.
-
-// Test Data : 
-// const cart = [
-//   { id: 101, name: "Laptop", price: 60000, quantity: 1, inStock: true },
-//   { id: 102, name: "Mouse", price: 800, quantity: 2, inStock: true },
-//   { id: 103, name: "Keyboard", price: 1500, quantity: 1, inStock: false },
-//   { id: 104, name: "Monitor", price: 12000, quantity: 1, inStock: true }
-// ];
-
-// Tasks:
-//     1. Use filter() to get only inStock products
-//     2. Use map() to create a new array with:  { name, totalPrice }
-//     3. Use reduce() to calculate grand total cart value
-//     4. Use find() to get details of "Mouse"
-//     5. Use findIndex() to find the position of "Keyboard"
-
+/**
+ * Assignment 1: Shopping Cart Summary
+ * 
+ * Topic: Array Higher-Order Methods with Objects
+ * 
+ * Scenario: Building a shopping cart summary for an e-commerce website.
+ * 
+ * Tasks:
+ *   1. filter() to get only inStock products
+ *   2. map() to create { name, totalPrice } array
+ *   3. reduce() to calculate grand total cart value
+ *   4. find() to get details of "Mouse"
+ *   5. findIndex() to find position of "Keyboard"
+ * 
+ * Concepts: filter, map, reduce on arrays of objects, object destructuring
+ */
 
 const cart = [
   { id: 101, name: "Laptop", price: 60000, quantity: 1, inStock: true },
   { id: 102, name: "Mouse", price: 800, quantity: 2, inStock: true },
   { id: 103, name: "Keyboard", price: 1500, quantity: 1, inStock: false },
-  { id: 104, name: "Monitor", price: 12000, quantity: 1, inStock: true }
+  { id: 104, name: "Monitor", price: 12000, quantity: 1, inStock: true },
 ];
 
-//     1. Use filter() to get only inStock products
-let allowed = cart.filter((available)=> available.inStock===true)
-console.log(allowed)
+// 1. Filter to get only products that are in stock
+let allowed = cart.filter((item) => item.inStock === true);
+console.log("In-stock products:", allowed);
 
-//     2. Use map() to create a new array with:  { name, totalPrice }
-let newArray = cart.map((item)=>{
-  return{
-    itemname :item.name,
-    totalprice: item.price*item.quantity
-  }
-}
-)
-console.log(newArray)
-//     3. Use reduce() to calculate grand total cart value
-let totalValue = cart.reduce((Accum,value)=>Accum+value.price*value.quantity,0)
-console.log(totalValue)
+// 2. Map to create a new array with name and computed total price
+let newArray = cart.map((item) => {
+  return {
+    itemname: item.name,
+    totalprice: item.price * item.quantity, // price × quantity
+  };
+});
+console.log("Name and total price:", newArray);
 
-//     4. Use find() to get details of "Mouse"
-let mouse = cart.find((item)=>item.name === "Mouse")
-console.log(mouse)
+// 3. Reduce to calculate the grand total of the entire cart
+// Accumulates price × quantity for each item, starting from 0
+let totalValue = cart.reduce(
+  (acc, item) => acc + item.price * item.quantity,
+  0
+);
+console.log("Grand total:", totalValue);
 
-//     5. Use findIndex() to find the position of "Keyboard"
+// 4. Find the item named "Mouse"
+let mouse = cart.find((item) => item.name === "Mouse");
+console.log("Mouse details:", mouse);
 
-let findKeyboard = cart.findIndex((item)=>item.name === "Keyboard")
-console.log(findKeyboard)
+// 5. Find the index of "Keyboard" in the cart array
+let findKeyboard = cart.findIndex((item) => item.name === "Keyboard");
+console.log("Keyboard index:", findKeyboard);

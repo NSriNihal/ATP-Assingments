@@ -1,35 +1,32 @@
+/**
+ * OTP Countdown Simulator
+ * 
+ * Topic: Asynchronous JavaScript — setInterval & clearInterval
+ * 
+ * Scenario: Simulate an OTP sending flow with countdown timer.
+ * 
+ * Flow:
+ *   1. Show "OTP sent successfully"
+ *   2. Start a 5-second countdown
+ *   3. Allow resend only after countdown ends
+ * 
+ * Concepts: setInterval, clearInterval, timer-based flow control
+ */
 
-// 2.OTP Countdown Simulator (Console App)
-// ------------------------------------
-        
-//         Simulate OTP sending flow in Node.js:
-        
-//         Show “OTP Sent Successfully”
-        
-//         Start 10-second countdown
-        
-//         Allow resend only after countdown ends
+// Step 1: OTP sent notification
+console.log("OTP sent Successfully");
 
-// console.log("OTP sent successfully")
-// setInterval(()=>{console.log("resend enabled")},10000)
-
-
-// let count =10;
-
-
-// console.log("OTP sent successfully")
-// setInterval(()=>{if(count>0)count --;el; console.log(count)},1000)
-
-console.log("OTP sent Successfully")
-
+// Step 2: Initialize countdown timer
 let second = 5;
 
-let intervelID = setInterval(()=>{
-    second --;
-    console.log(`OTP can be sent after ${second}`)
+// Step 3: Start interval that fires every 1 second
+let intervalID = setInterval(() => {
+  second--;
+  console.log(`OTP can be resent after ${second}s`);
 
-    if(second === 0){
-        console.log("Resend OTP")
-        clearInterval(intervelID)
-    }
-},1000)
+  // When countdown reaches 0, stop the interval and enable resend
+  if (second === 0) {
+    console.log("Resend OTP");
+    clearInterval(intervalID); // Stop the repeating timer
+  }
+}, 1000);

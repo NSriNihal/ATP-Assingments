@@ -1,42 +1,42 @@
-// Assignment 2: Online Course Name Processor
-// ------------------------------------------
-// Scenario : You are preparing a course list for display on a website.
+/**
+ * Assignment 2: Online Course Name Processor
+ * 
+ * Topic: Array Higher-Order Methods with Strings
+ * 
+ * Scenario: Preparing a course list for display on a website.
+ * 
+ * Tasks:
+ *   1. filter() courses with name length > 5
+ *   2. map() to convert course names to uppercase
+ *   3. reduce() to generate a single pipe-separated string
+ *   4. find() the course "react"
+ *   5. findIndex() of "node"
+ * 
+ * Concepts: filter, map, reduce with strings, find, findIndex
+ */
 
-// Test data:
-// const courses = ["javascript", "react", "node", "mongodb", "express"];
+const courses = ["javascript", "react", "node", "mongodb", "express"];
 
+// 1. Filter courses whose name length is greater than 5 characters
+const lengthAbove5 = courses.filter((name) => name.length > 5);
+console.log("Courses with length > 5:", lengthAbove5);
 
-// Tasks:
-//     1. filter() courses with name length > 5
-//     2. map() to convert course names to uppercase
-//     3. reduce() to generate a single string:
-//               "JAVASCRIPT | REACT | NODE | MONGODB | EXPRESS"
+// 2. Map to convert all course names to uppercase
+const upperCase = courses.map((name) => name.toUpperCase());
+console.log("Uppercase courses:", upperCase);
 
-//     4. find() the course "react"
-//     5. findIndex() of "node"
+// 3. Reduce to generate a single pipe-separated string
+// Using reduce to concatenate all names with " | " separator
+const singleString = courses.reduce((acc, name, index) => {
+  // Avoid trailing separator by checking if it's the last element
+  return index === 0 ? name : acc + " | " + name;
+}, "");
+console.log("Combined string:", singleString.toUpperCase());
 
- const courses = ["javascript", "react", "node", "mongodb", "express"];
+// 4. Find the course "react"
+const findReact = courses.find((name) => name === "react");
+console.log("Found course:", findReact);
 
- //1  filter() courses with name length > 5
- const lengthAbove5 = courses.filter((names)=>names.length > 5)
- console.log("length above 5 :",lengthAbove5)
-
- //     2. map() to convert course names to uppercase
- const upperCase = courses.map((names)=>names.toUpperCase())
- console.log(upperCase)
- 
-
-//     3. reduce() to generate a single string:
-//               "JAVASCRIPT | REACT | NODE | MONGODB | EXPRESS"
-
-const singleString = courses.reduce((acc,name)=>acc+name+" | "," ")
-console.log(singleString.toUpperCase())
-
-//     4. find() the course "react"
-
-const findReact = courses.find((name)=>name ==="react" )
-console.log(findReact)
-
-//     5. findIndex() of "node"
-const findNode = courses.findIndex((name)=>name == "node")
-console.log("index of node :",findNode)
+// 5. Find the index of "node"
+const findNode = courses.findIndex((name) => name === "node");
+console.log("Index of node:", findNode);

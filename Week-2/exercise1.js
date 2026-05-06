@@ -1,36 +1,24 @@
-// 💡 Exercise 1: Copy & Extend an Array
+/**
+ * Exercise 1: Copy & Extend an Array
+ * 
+ * Topic: Spread Operator with Arrays
+ * 
+ * Goal: Learn array copying with spread operator
+ * 
+ * Tasks:
+ *   1. Create a new array moreFruits
+ *   2. Copy all fruits from the original array
+ *   3. Add "orange" at the end using spread
+ *   4. Print both arrays — original should NOT change
+ * 
+ * Concepts: Spread operator (...), immutable array operations
+ */
 
-//                         Goal: Learn array copying with spread
-                        
-//                         You are given:
-//                                 let fruits = ["apple", "banana"];
-                        
-                        
-//                         Tasks
-//                               -> Create a new array moreFruits
-                              
-//                               -> Copy all fruits from fruits
-                              
-//                               -> Add "orange" at the end using spread
-                              
-//                               -> Print both arrays
-                        
-                        
-//                         ✅ Expected Output
-//                               ["apple", "banana"]
-//                               ["apple", "banana", "orange"]
-                        
-//                         👉 Original array should NOT change.
+let fruits = ["apple", "banana"];
 
- let fruits = ["apple", "banana"];
+// Create a new array by spreading the original and adding "orange"
+// The spread operator (...) copies all elements into the new array
+let moreFruits = [...fruits, "orange"];
 
- let moreFruits = [...fruits,"orange"]
-
- console.log(fruits)
- console.log(moreFruits)
-
-
-
-
-
-
+console.log("Original:", fruits);    // ["apple", "banana"] — unchanged
+console.log("Extended:", moreFruits); // ["apple", "banana", "orange"]
