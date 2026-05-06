@@ -1,3 +1,10 @@
+/**
+ * Cloudinary Configuration
+ * 
+ * Configures the Cloudinary SDK with credentials from environment variables.
+ * Used for uploading user profile images.
+ */
+
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
