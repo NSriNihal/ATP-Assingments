@@ -1,8 +1,8 @@
-# 📚 ATP Assignments
+#  ATP Assignments
 
 > A collection of weekly assignments completed as part of the **Advanced Training Program (ATP)** — covering JavaScript fundamentals through full-stack MERN development.
 
-## 📑 Table of Contents
+##  Table of Contents
 
 | Week | Topic | Folder |
 |------|-------|--------|
@@ -14,7 +14,7 @@
 | Week 6 | MERN Stack Mini Projects | [`atp-week-6`](./atp-week-6/) |
 | Capstone | Full-Stack Blog Application (MERN) | [`CapstoneProject`](./CapstoneProject/) |
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Languages:** JavaScript (ES6+), HTML5, CSS3
 - **Runtime:** Node.js
@@ -24,7 +24,7 @@
 - **Cloud:** Cloudinary (image uploads)
 - **Tools:** Nodemon, REST Client, Postman
 
-## 🚀 Getting Started
+##  Getting Started
 
 ```bash
 # Clone the repository
@@ -34,7 +34,3 @@ cd ATP-Assingments
 # Navigate to any week folder and follow its README for instructions
 ```
 
-## 👤 Author
-
-**N Sri Nihal**
-- GitHub: [@NSriNihal](https://github.com/NSriNihal)
