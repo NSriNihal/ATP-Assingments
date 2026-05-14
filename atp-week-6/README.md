@@ -1,5 +1,5 @@
 # Week 6 — MERN Stack Mini Projects
-
+#deployment link --  https://emp-app-two.vercel.app/
 ## 📖 Topics Covered
 
 - Full-stack development with the MERN stack
